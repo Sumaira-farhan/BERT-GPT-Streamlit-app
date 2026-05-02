@@ -11,9 +11,11 @@ senti_model = pipeline(
 )
 
 # GPT text generation model
+from transformers import pipeline
+
 generator = pipeline(
-    "text-generation",
-    model="gpt2"
+    "text2text-generation",
+    model="google/flan-t5-base"
 )
 
 # Streamlit UI
@@ -61,10 +63,7 @@ elif menu == "Text Generation":
 
         if prompt.strip() != "":
 
-            output = generator(
-                            prompt, max_new_tokens=60, do_sample=True, temperature=0.7, top_p=0.9, 
-                            repetition_penalty=1.2, no_repeat_ngram_size=3
-                            )
+            output = generator(prompt, max_new_tokens=80)
          
 
             st.write(output[0]["generated_text"])
