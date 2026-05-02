@@ -11,9 +11,9 @@ senti_model = pipeline(
 )
 
 # GPT text generation model
-gener_model = pipeline(
+generator = pipeline(
     "text-generation",
-    model="distilgpt2"
+    model="gpt2"
 )
 
 # Streamlit UI
